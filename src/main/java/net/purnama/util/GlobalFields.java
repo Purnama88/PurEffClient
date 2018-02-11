@@ -42,6 +42,7 @@ public class GlobalFields {
     //93.188.166.220 http://93.188.166.220:8080/PurEff-Ika/
     
     public static String SERVER = "http://localhost:8080/PurEff/";
+//    public static String SERVER = "http://93.188.166.220:8080/PurEff-1.0/";
     
     public static String API = "api/";
     

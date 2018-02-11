@@ -231,6 +231,10 @@ public abstract class InvoiceDetailPanel extends MyPanel{
                 home();
             }
         });
+        
+        mailbutton.addActionListener((ActionEvent e) -> {
+            mail();
+        });
     }
     
     @Override

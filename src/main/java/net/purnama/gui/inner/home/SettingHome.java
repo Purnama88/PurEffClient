@@ -8,6 +8,8 @@ package net.purnama.gui.inner.home;
 
 import javax.swing.JTabbedPane;
 import net.purnama.gui.inner.home.util.ChangePasswordPanel;
+import net.purnama.gui.inner.home.util.ExportPanel;
+import net.purnama.gui.inner.home.util.ImportPanel;
 import net.purnama.gui.library.MyPanel;
 import net.purnama.util.GlobalFields;
 
@@ -21,6 +23,10 @@ public class SettingHome extends MyPanel{
     
     private final ChangePasswordPanel changepasswordpanel;
     
+    private final ExportPanel exportpanel;
+    
+    private final ImportPanel importpanel;
+    
     public SettingHome() {
         super(GlobalFields.PROPERTIES.getProperty("LABEL_SETTING"));
         
@@ -28,6 +34,12 @@ public class SettingHome extends MyPanel{
         
         changepasswordpanel = new ChangePasswordPanel();
         tabbedpane.add(changepasswordpanel, GlobalFields.PROPERTIES.getProperty("LABEL_PASSWORD"));
+        
+        exportpanel = new ExportPanel();
+        tabbedpane.add(exportpanel, GlobalFields.PROPERTIES.getProperty("LABEL_EXPORT"));
+        
+        importpanel = new ImportPanel();
+        tabbedpane.add(importpanel, GlobalFields.PROPERTIES.getProperty("LABEL_IMPORT"));
         
         add(tabbedpane);
     }

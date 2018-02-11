@@ -87,10 +87,6 @@ public class DeliveryDetail extends InvoiceDetailPanel{
         
         rightsummarypanel.removeAll();
         
-        mailbutton.addActionListener((ActionEvent e) -> {
-            mail();
-        });
-        
         load();
     }
     

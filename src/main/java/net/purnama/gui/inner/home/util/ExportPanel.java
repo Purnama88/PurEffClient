@@ -36,11 +36,16 @@ public class ExportPanel extends JPanel{
         
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         
-        filechooserpanel5 = new FileChooserPanel(GlobalFields.PROPERTIES.getProperty("LABEL_EXPORT_PARTNER"));
-        filechooserpanel4 = new FileChooserPanel(GlobalFields.PROPERTIES.getProperty("LABEL_EXPORT_ITEMGROUP"));
-        filechooserpanel =  new FileChooserPanel(GlobalFields.PROPERTIES.getProperty("LABEL_EXPORT_ITEM"));
-        filechooserpanel3 =  new FileChooserPanel(GlobalFields.PROPERTIES.getProperty("LABEL_EXPORT_SELLPRICE"));
-        filechooserpanel2 =  new FileChooserPanel(GlobalFields.PROPERTIES.getProperty("LABEL_EXPORT_STOCK"));
+        filechooserpanel5 = new FileChooserPanel(GlobalFields.PROPERTIES.getProperty("LABEL_EXPORT_PARTNER"), 
+                FileChooserPanel.SAVE);
+        filechooserpanel4 = new FileChooserPanel(GlobalFields.PROPERTIES.getProperty("LABEL_EXPORT_ITEMGROUP"), 
+                FileChooserPanel.SAVE);
+        filechooserpanel =  new FileChooserPanel(GlobalFields.PROPERTIES.getProperty("LABEL_EXPORT_ITEM"), 
+                FileChooserPanel.SAVE);
+        filechooserpanel3 =  new FileChooserPanel(GlobalFields.PROPERTIES.getProperty("LABEL_EXPORT_SELLPRICE"), 
+                FileChooserPanel.SAVE);
+        filechooserpanel2 =  new FileChooserPanel(GlobalFields.PROPERTIES.getProperty("LABEL_EXPORT_STOCK"), 
+                FileChooserPanel.SAVE);
         
         add(filechooserpanel5);
         add(filechooserpanel4);
@@ -56,6 +61,7 @@ public class ExportPanel extends JPanel{
                 JOptionPane.showMessageDialog(null, GlobalFields.
                             PROPERTIES.getProperty("NOTIFICATION_EXPORT_SUCCESS"), "",
                             JOptionPane.INFORMATION_MESSAGE);
+                filechooserpanel4.clearPath();
             }
             else{
                 JOptionPane.showMessageDialog(null, GlobalFields.
@@ -72,6 +78,8 @@ public class ExportPanel extends JPanel{
                 JOptionPane.showMessageDialog(null, GlobalFields.
                             PROPERTIES.getProperty("NOTIFICATION_EXPORT_SUCCESS"), "",
                             JOptionPane.INFORMATION_MESSAGE);
+                
+                filechooserpanel5.clearPath();
             }
             else{
                 JOptionPane.showMessageDialog(null, GlobalFields.
@@ -88,6 +96,8 @@ public class ExportPanel extends JPanel{
                 JOptionPane.showMessageDialog(null, GlobalFields.
                             PROPERTIES.getProperty("NOTIFICATION_EXPORT_SUCCESS"), "",
                             JOptionPane.INFORMATION_MESSAGE);
+                
+                filechooserpanel.clearPath();
             }
             else{
                 JOptionPane.showMessageDialog(null, GlobalFields.
@@ -116,6 +126,9 @@ public class ExportPanel extends JPanel{
                 @Override
                 protected void done() {
                     if(clientresponse == null){
+                        JOptionPane.showMessageDialog(null, GlobalFields.
+                                            PROPERTIES.getProperty("NOTIFICATION_TIMEDOUT"), "",
+                                            JOptionPane.INFORMATION_MESSAGE);
                     }
                     else if(clientresponse.getStatus() != 200) {
                     }
@@ -136,6 +149,8 @@ public class ExportPanel extends JPanel{
                                 JOptionPane.showMessageDialog(null, GlobalFields.
                                             PROPERTIES.getProperty("NOTIFICATION_EXPORT_SUCCESS"), "",
                                             JOptionPane.INFORMATION_MESSAGE);
+                                
+                                filechooserpanel2.clearPath();
                             }
                             else{
                                 JOptionPane.showMessageDialog(null, GlobalFields.
@@ -144,7 +159,9 @@ public class ExportPanel extends JPanel{
                             }
                         }
                         catch(IOException e){
-
+                            JOptionPane.showMessageDialog(null, GlobalFields.
+                                            PROPERTIES.getProperty("NOTIFICATION_EXPORT_FAIL"), "",
+                                            JOptionPane.ERROR_MESSAGE);
                         }
                     }
                 };
@@ -163,8 +180,6 @@ public class ExportPanel extends JPanel{
                 
                 @Override
                 protected Boolean doInBackground(){
-                
-                    
                     clientresponse = RestClient.get("getSellPriceList");
                     
                     return true;
@@ -174,6 +189,9 @@ public class ExportPanel extends JPanel{
                 @Override
                 protected void done() {
                     if(clientresponse == null){
+                        JOptionPane.showMessageDialog(null, GlobalFields.
+                                            PROPERTIES.getProperty("NOTIFICATION_TIMEDOUT"), "",
+                                            JOptionPane.INFORMATION_MESSAGE);
                     }
                     else if(clientresponse.getStatus() != 200) {
                     }
@@ -187,10 +205,10 @@ public class ExportPanel extends JPanel{
                                     TypeFactory.defaultInstance().constructCollectionType(ArrayList.class,
                                             SellPriceEntity.class));
                             
-                            for(SellPriceEntity sellprice : list){
-                                System.out.println(sellprice.getItem() + " " + sellprice.getUom()
-                                + " " + sellprice.getValue());
-                            }
+//                            for(SellPriceEntity sellprice : list){
+//                                System.out.println(sellprice.getItem() + " " + sellprice.getUom()
+//                                + " " + sellprice.getValue());
+//                            }
 
                             ExportController exportController = new ExportController(filechooserpanel3.getFilePath());
                             boolean result = exportController.exportItemSellPriceTemplateToExcel(list);
@@ -199,6 +217,8 @@ public class ExportPanel extends JPanel{
                                 JOptionPane.showMessageDialog(null, GlobalFields.
                                             PROPERTIES.getProperty("NOTIFICATION_EXPORT_SUCCESS"), "",
                                             JOptionPane.INFORMATION_MESSAGE);
+                                
+                                filechooserpanel3.clearPath();
                             }
                             else{
                                 JOptionPane.showMessageDialog(null, GlobalFields.

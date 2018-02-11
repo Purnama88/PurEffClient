@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import net.purnama.model.ItemWarehouseEntity;
 import net.purnama.model.SellPriceEntity;
+import net.purnama.util.GlobalFields;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -51,10 +52,13 @@ public class ExportController {
         
         int numofitem = list.size() /  numofuom;
         
-        Object[][] datatypes = new Object[numofitem + 1][numofuom+1];
+        Object[][] datatypes = new Object[numofitem + 1][numofuom+2];
         
         int rowindex = 0;
-        int colindex = 1;
+        int colindex = 2;
+        
+        datatypes[0][0] = GlobalFields.PROPERTIES.getProperty("LABEL_TABLE_CODE");
+        datatypes[0][1] = GlobalFields.PROPERTIES.getProperty("LABEL_TABLE_DESCRIPTION");
         
         for(String codes : uomnames){
             datatypes[rowindex][colindex] = codes;
@@ -66,17 +70,21 @@ public class ExportController {
         colindex = 0;
         for(SellPriceEntity sellprice : list){
             if(temp.equals(sellprice.getItem().toString())){
-                colindex += 1;
+                colindex ++;
                 datatypes[rowindex][colindex] = sellprice.getValue();
             }
             else{
-                rowindex += 1;
+                rowindex ++;
                 colindex = 0;
                 temp = sellprice.getItem().toString();
                 
-                datatypes[rowindex][colindex] = sellprice.getItem().toString();
+                datatypes[rowindex][colindex] = sellprice.getItem().getCode();
                 
-                colindex += 1;
+                colindex++;
+                
+                datatypes[rowindex][colindex] = sellprice.getItem().getName();
+                
+                colindex ++;
                 datatypes[rowindex][colindex] = sellprice.getValue();
             }
         }
@@ -137,10 +145,13 @@ public class ExportController {
         
         int numofitem = list.size() /  numofwarehouse;
         
-        Object[][] datatypes = new Object[numofitem + 1][numofwarehouse+1];
+        Object[][] datatypes = new Object[numofitem + 1][numofwarehouse+2];
         
         int rowindex = 0;
-        int colindex = 1;
+        int colindex = 2;
+        
+        datatypes[0][0] = GlobalFields.PROPERTIES.getProperty("LABEL_TABLE_CODE");
+        datatypes[0][1] = GlobalFields.PROPERTIES.getProperty("LABEL_TABLE_DESCRIPTION");
         
         for(String codes : warehousecodes){
             datatypes[rowindex][colindex] = codes;
@@ -152,17 +163,21 @@ public class ExportController {
         colindex = 0;
         for(ItemWarehouseEntity itemwarehouse : list){
             if(temp.equals(itemwarehouse.getItem().toString())){
-                colindex += 1;
+                colindex ++;
                 datatypes[rowindex][colindex] = itemwarehouse.getStock();
             }
             else{
-                rowindex += 1;
+                rowindex ++;
                 colindex = 0;
                 temp = itemwarehouse.getItem().toString();
                 
-                datatypes[rowindex][colindex] = itemwarehouse.getItem().toString();
+                datatypes[rowindex][colindex] = itemwarehouse.getItem().getCode();
                 
-                colindex += 1;
+                colindex++;
+                
+                datatypes[rowindex][colindex] = itemwarehouse.getItem().getName();
+                
+                colindex++;
                 datatypes[rowindex][colindex] = itemwarehouse.getStock();
             }
         }
