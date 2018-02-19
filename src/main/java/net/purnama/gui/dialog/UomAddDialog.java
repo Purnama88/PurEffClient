@@ -79,7 +79,7 @@ public class UomAddDialog extends MyDialog implements ActionListener{
         namepanel.setTextFieldActionListener(this);
         valuepanel.setTextFieldActionListener(this);
         
-        submitbutton.addActionListener(this);
+        submitpanel.getSubmitButton().addActionListener(this);
     }
     
     public UomEntity showDialog(){

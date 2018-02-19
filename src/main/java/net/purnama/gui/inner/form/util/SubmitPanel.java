@@ -20,7 +20,7 @@ import net.purnama.util.GlobalFields;
  */
 public class SubmitPanel extends JPanel{
     
-    private final MyButton submitbutton;
+    private final MyButton submitbutton, cancelbutton;
     
     public SubmitPanel(){
         super(new FlowLayout(FlowLayout.CENTER));
@@ -29,19 +29,31 @@ public class SubmitPanel extends JPanel{
         setAlignmentX(Component.LEFT_ALIGNMENT);
         
         submitbutton = new MyButton(GlobalFields.PROPERTIES.getProperty("LABEL_SUBMIT"));
+        cancelbutton = new MyButton(GlobalFields.PROPERTIES.getProperty("LABEL_CANCEL"));
+        
         add(submitbutton);
+    }
+    
+    public void addCancelButton(){
+        add(cancelbutton);
     }
     
     public void loading(){
         submitbutton.setIcon(new MyImageIcon().getImage("net/purnama/image/Loading_16.gif"));
         submitbutton.setText("");
+        cancelbutton.setEnabled(false);
         disable();
     }
     
     public void finish(){
         submitbutton.setText(GlobalFields.PROPERTIES.getProperty("LABEL_SUBMIT"));
         submitbutton.setIcon(null);
+        cancelbutton.setEnabled(true);
         enable();
+    }
+    
+    public MyButton getCancelButton(){
+        return cancelbutton;
     }
     
     public MyButton getSubmitButton(){
@@ -51,10 +63,12 @@ public class SubmitPanel extends JPanel{
     @Override
     public void disable(){
         submitbutton.setEnabled(false);
+        cancelbutton.setEnabled(false);
     }
     
     @Override
     public void enable(){
         submitbutton.setEnabled(true);
+        cancelbutton.setEnabled(true);
     }
 }

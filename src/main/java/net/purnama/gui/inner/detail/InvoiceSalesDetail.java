@@ -67,6 +67,8 @@ public class InvoiceSalesDetail extends InvoiceDetailPanel{
         
         this.id = id;
         
+        upperpanel.addExportButton();
+        
         partnerpanel = new LabelTextFieldPanel(GlobalFields.PROPERTIES.getProperty("LABEL_PARTNER"),
             "", false);
         duedatepanel = new DatePanel(

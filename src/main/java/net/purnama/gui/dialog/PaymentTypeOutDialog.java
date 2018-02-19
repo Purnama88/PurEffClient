@@ -144,7 +144,7 @@ public class PaymentTypeOutDialog extends MyDialog{
             }
         });
         
-        submitbutton.addActionListener((ActionEvent e) -> {
+        submitpanel.getSubmitButton().addActionListener((ActionEvent e) -> {
             if(amountpanel.getTextFieldValue() != initialamountpanel.getTextFieldValue()){
                 
             }

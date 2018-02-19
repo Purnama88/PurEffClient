@@ -162,7 +162,7 @@ public class PaymentTypeInDraftDialog extends MyDialog{
             remainingpanel.setTextFieldValue(remainingpanel.getTextFieldValue() + deleteamount);
         });
         
-        submitbutton.addActionListener((ActionEvent e) -> {
+        submitpanel.getSubmitButton().addActionListener((ActionEvent e) -> {
             amount = amountpanel.getTextFieldValue();
             save();
             delete();

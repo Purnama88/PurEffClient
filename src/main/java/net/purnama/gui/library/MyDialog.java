@@ -15,6 +15,7 @@ import javax.swing.Box;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+import net.purnama.gui.inner.form.util.SubmitPanel;
 import net.purnama.util.GlobalFields;
 
 /**
@@ -25,11 +26,13 @@ public class MyDialog extends JDialog{
     
     protected final Box box;
     
-    protected final JPanel submitpanel;
+    protected final SubmitPanel submitpanel;
     
     protected final JPanel okpanel;
     
-    protected final MyButton submitbutton, cancelbutton, okbutton;
+    protected final MyButton 
+//            submitbutton, cancelbutton, 
+            okbutton;
     
     public MyDialog(String title, int width, int height){
         super(GlobalFields.MAINFRAME, title, Dialog.ModalityType.DOCUMENT_MODAL);
@@ -39,15 +42,17 @@ public class MyDialog extends JDialog{
         box = Box.createVerticalBox();
         box.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         
-        submitpanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+//        submitpanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         
+        submitpanel = new SubmitPanel();
+        submitpanel.addCancelButton();
         okpanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         
-        submitbutton = new MyButton(GlobalFields.PROPERTIES.getProperty("LABEL_SUBMIT"));
-        cancelbutton = new MyButton(GlobalFields.PROPERTIES.getProperty("LABEL_CANCEL"));
+//        submitbutton = new MyButton(GlobalFields.PROPERTIES.getProperty("LABEL_SUBMIT"));
+//        cancelbutton = new MyButton(GlobalFields.PROPERTIES.getProperty("LABEL_CANCEL"));
         okbutton = new MyButton(GlobalFields.PROPERTIES.getProperty("LABEL_OK"));
-        submitpanel.add(submitbutton);
-        submitpanel.add(cancelbutton);
+//        submitpanel.add(submitbutton);
+//        submitpanel.add(cancelbutton);
         
         okpanel.add(okbutton);
         
@@ -57,7 +62,7 @@ public class MyDialog extends JDialog{
         
         setLocationRelativeTo(GlobalFields.MAINFRAME);
         
-        cancelbutton.addActionListener((ActionEvent e) -> {
+        submitpanel.getCancelButton().addActionListener((ActionEvent e) -> {
            dispose();
         });
         

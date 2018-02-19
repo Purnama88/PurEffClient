@@ -73,9 +73,9 @@ public class MainToolBar extends JToolBar{
         add(savebutton);
         addSeparator();
         add(printpreviewbutton);
-        add(printbutton);
+//        add(printbutton);
         addSeparator();
-        add(importbutton);
+//        add(importbutton);
         add(exportbutton);
         addSeparator();
         add(calculatorbutton);
@@ -113,6 +113,16 @@ public class MainToolBar extends JToolBar{
         printpreviewbutton.addActionListener((ActionEvent e) -> {
             MyPanel panel = (MyPanel)tabbedpane.getComponentAt(tabbedpane.getSelectedIndex());
             panel.printpreview();
+        });
+        
+        importbutton.addActionListener((ActionEvent e) -> {
+//            MyPanel panel = (MyPanel)tabbedpane.getComponentAt(tabbedpane.getSelectedIndex());
+//            panel.import();
+        });
+        
+        exportbutton.addActionListener((ActionEvent e) -> {
+            MyPanel panel = (MyPanel)tabbedpane.getComponentAt(tabbedpane.getSelectedIndex());
+            panel.export();
         });
         
         settingbutton.addActionListener((ActionEvent e) -> {

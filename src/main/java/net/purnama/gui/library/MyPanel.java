@@ -75,4 +75,10 @@ public class MyPanel extends JPanel{
                     "You Dont Have Print Preview Method", "", 
                     JOptionPane.ERROR_MESSAGE);
     }
+    
+    public void export(){
+        JOptionPane.showMessageDialog(this, 
+                    "You Dont Have Export Method", "", 
+                    JOptionPane.ERROR_MESSAGE);
+    }
 }

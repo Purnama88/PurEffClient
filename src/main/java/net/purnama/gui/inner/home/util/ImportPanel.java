@@ -7,11 +7,12 @@ package net.purnama.gui.inner.home.util;
 
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import net.purnama.controller.ImportController;
 import net.purnama.gui.dialog.ItemGroupImportDialog;
+import net.purnama.gui.dialog.ItemImportDialog;
+import net.purnama.gui.dialog.PartnerImportDialog;
 import net.purnama.model.ItemEntity;
 import net.purnama.model.ItemGroupEntity;
 import net.purnama.model.PartnerEntity;
@@ -44,22 +45,34 @@ public class ImportPanel extends JPanel{
         add(filechooserpanel3);
         
         filechooserpanel1.getSubmitButton().addActionListener((ActionEvent e) ->{
-            ImportController importcontroller = new ImportController(filechooserpanel2.getFilePath());
-            List<PartnerEntity> partnerlist = importcontroller.importPartner();
+            ImportController importcontroller = new ImportController(filechooserpanel1.getFilePath());
+            ArrayList<PartnerEntity> partnerlist = importcontroller.importPartner();
+            
+            if(partnerlist != null){
+                PartnerImportDialog pid = new PartnerImportDialog(partnerlist);
+                pid.showDialog();
+            }
         });
         
         filechooserpanel2.getSubmitButton().addActionListener((ActionEvent e) ->{
-            ImportController importcontroller = new ImportController(filechooserpanel1.getFilePath());
+            ImportController importcontroller = new ImportController(filechooserpanel2.getFilePath());
             ArrayList<ItemGroupEntity> itemgrouplist = importcontroller.importItemGroup();
             
-            ItemGroupImportDialog igid = new ItemGroupImportDialog(itemgrouplist);
-            igid.showDialog();
+            if(itemgrouplist != null){
+                ItemGroupImportDialog igid = new ItemGroupImportDialog(itemgrouplist);
+                igid.showDialog();
+            }
             
         });
         
         filechooserpanel3.getSubmitButton().addActionListener((ActionEvent e) ->{
             ImportController importcontroller = new ImportController(filechooserpanel3.getFilePath());
-            List<ItemEntity> itemlist = importcontroller.importItem();
+            ArrayList<ItemEntity> itemlist = importcontroller.importItem();
+            
+            if(itemlist != null){
+                ItemImportDialog iid = new ItemImportDialog(itemlist);
+                iid.showDialog();
+            }
         });
     }
 }

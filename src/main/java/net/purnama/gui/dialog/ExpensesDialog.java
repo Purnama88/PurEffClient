@@ -21,7 +21,7 @@ public class ExpensesDialog extends MyDialog{
     
     public ExpensesDialog(LabelDecimalTextFieldPanel roundingpanel, LabelDecimalTextFieldPanel freightpanel,
             LabelDecimalTextFieldPanel taxpanel, LabelDecimalTextFieldPanel totalpanel){
-        super(GlobalFields.PROPERTIES.getProperty("LABEL_DIALOG_OTHERS"), 450, 250);
+        super(GlobalFields.PROPERTIES.getProperty("LABEL_OTHERS"), 450, 250);
         
         box.add(roundingpanel);
         box.add(freightpanel);
@@ -32,7 +32,7 @@ public class ExpensesDialog extends MyDialog{
         box.add(totalpanel);
         box.add(submitpanel);
         
-        submitbutton.addActionListener((ActionEvent e) -> {
+        submitpanel.getSubmitButton().addActionListener((ActionEvent e) -> {
            dispose();
         });
     }

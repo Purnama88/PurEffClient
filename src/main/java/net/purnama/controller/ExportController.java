@@ -219,7 +219,7 @@ public class ExportController {
     public boolean exportItemTemplateToExcel(){
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet("Item");
-        Object[][] datatypes = {
+        String[][] datatypes = {
                 {"CODE", "NAME", "ITEM GROUP CODE", "BUY UOM", "SELL UOM", 
                 "COST", "NOTE"}
         };
@@ -261,7 +261,7 @@ public class ExportController {
     public boolean exportItemGroupTemplateToExcel(){
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet("Item Group");
-        Object[][] datatypes = {
+        String[][] datatypes = {
                 {"CODE", "NAME", "NOTE"}
         };
 
@@ -302,7 +302,7 @@ public class ExportController {
     public boolean exportPartnerTemplateToExcel(){
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet("Partner");
-        Object[][] datatypes = {
+        String[][] datatypes = {
                 {"CODE", "NAME", "CONTACT NAME", "PARTNER TYPE", "ADDRESS", 
                 "PHONE NUMBER", "PHONE NUMBER 2", "MOBILE NUMBER", "FAX NUMBER",
                 "EMAIL", "MAX DISCOUNT", "MAX BALANCE", "PAYMENT DUE (DAYS)", "NOTE"}

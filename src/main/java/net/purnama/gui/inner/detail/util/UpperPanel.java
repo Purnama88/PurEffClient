@@ -27,7 +27,7 @@ public class UpperPanel extends JPanel{
     
     private final MyLabel notiflabel, statuslabel;
     
-    private final MyButton homebutton, editbutton, printpreviewbutton;
+    private final MyButton homebutton, editbutton, printpreviewbutton, exportbutton;
     
     private final JProgressBar progressbar;
     
@@ -48,6 +48,8 @@ public class UpperPanel extends JPanel{
         editbutton.setToolTipText(GlobalFields.PROPERTIES.getProperty("TOOLTIP_EDIT"));
         printpreviewbutton = new MyButton(new MyImageIcon().getImage("net/purnama/image/PrintPreview_16.png"), 24, 24);
         printpreviewbutton.setToolTipText(GlobalFields.PROPERTIES.getProperty("TOOLTIP_PRINTPREVIEW"));
+        exportbutton = new MyButton(new MyImageIcon().getImage("net/purnama/image/PrintPreview_16.png"), 24, 24);
+        exportbutton.setToolTipText(GlobalFields.PROPERTIES.getProperty("TOOLTIP_EXPORT"));
         
         leftpanel.add(homebutton);
         
@@ -113,5 +115,13 @@ public class UpperPanel extends JPanel{
     
     public void removePrintPreviewButton(){
         leftpanel.remove(printpreviewbutton);
+    }
+    
+    public void addExportButton(){
+        leftpanel.add(exportbutton); 
+    }
+    
+    public MyButton getExportButton(){
+        return exportbutton;
     }
 }

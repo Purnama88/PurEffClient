@@ -145,7 +145,7 @@ public class NumberingAddDialog extends MyDialog implements DocumentListener, Ac
         numberingstarttf.addActionListener(this);
         numberingendtf.addActionListener(this);
         
-        submitbutton.addActionListener(this);
+        submitpanel.getSubmitButton().addActionListener(this);
         
         loadNames();
     }
