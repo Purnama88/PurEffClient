@@ -15,6 +15,7 @@ import com.sun.jersey.api.client.WebResource;
 import java.io.IOException;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
+import net.purnama.gui.login.LoginFrame;
 import net.purnama.util.GlobalFields;
 
 /**
@@ -68,6 +69,24 @@ public class RestClient {
             response = builder
                .get(ClientResponse.class);
             
+            if(response.getStatus() == 401){
+                try{
+                    GlobalFields.MAINFRAME.dispose();
+                    GlobalFields.TOKEN = "";
+                    GlobalFields.ROLE = null;
+                    GlobalFields.USER = null;
+                    LoginFrame loginframe = new LoginFrame();
+                }
+                catch(Exception e){
+                    
+                }
+            }
+            else{
+                String header = response.getHeaders().getFirst("Authorization");
+                String authToken = header.substring(7);
+                GlobalFields.TOKEN = authToken;
+            }
+            
         }
         catch(ClientHandlerException ex){
             ex.printStackTrace();
@@ -84,8 +103,6 @@ public class RestClient {
             ObjectMapper mapper = new ObjectMapper();
             String input = mapper.writeValueAsString(object);
             
-            System.out.println(input);
-            
             Client client = Client.create();
             client.setConnectTimeout(GlobalFields.TIMEOUT);
             client.setReadTimeout(GlobalFields.TIMEOUT);
@@ -99,7 +116,23 @@ public class RestClient {
 
             response =  builder.post(ClientResponse.class, input);
             
-            
+            if(response.getStatus() == 401){
+                try{
+                    GlobalFields.MAINFRAME.dispose();
+                    GlobalFields.TOKEN = "";
+                    GlobalFields.ROLE = null;
+                    GlobalFields.USER = null;
+                    LoginFrame loginframe = new LoginFrame();
+                }
+                catch(Exception e){
+                    
+                }
+            }
+            else{
+                String header = response.getHeaders().getFirst("Authorization");
+                String authToken = header.substring(7);
+                GlobalFields.TOKEN = authToken;
+            }
         }
         catch(RuntimeException | IOException e){
             e.printStackTrace();
@@ -160,7 +193,23 @@ public class RestClient {
 
             response =  builder.put(ClientResponse.class, input);
             
-            
+            if(response.getStatus() == 401){
+                try{
+                    GlobalFields.MAINFRAME.dispose();
+                    GlobalFields.TOKEN = "";
+                    GlobalFields.ROLE = null;
+                    GlobalFields.USER = null;
+                    LoginFrame loginframe = new LoginFrame();
+                }
+                catch(Exception e){
+                    
+                }
+            }
+            else{
+                String header = response.getHeaders().getFirst("Authorization");
+                String authToken = header.substring(7);
+                GlobalFields.TOKEN = authToken;
+            }
         }
         catch(RuntimeException | IOException e){
             e.printStackTrace();
@@ -187,6 +236,24 @@ public class RestClient {
             
             response = builder
                .delete(ClientResponse.class);
+            
+            if(response.getStatus() == 401){
+                try{
+                    GlobalFields.MAINFRAME.dispose();
+                    GlobalFields.TOKEN = "";
+                    GlobalFields.ROLE = null;
+                    GlobalFields.USER = null;
+                    LoginFrame loginframe = new LoginFrame();
+                }
+                catch(Exception e){
+                    
+                }
+            }
+            else{
+                String header = response.getHeaders().getFirst("Authorization");
+                String authToken = header.substring(7);
+                GlobalFields.TOKEN = authToken;
+            }
             
         }
         catch(ClientHandlerException ex){
