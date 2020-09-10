@@ -156,9 +156,9 @@ public abstract class InvoiceDraftDetailPanel extends MyPanel implements Documen
 //        progressbar = new JProgressBar();
 //        progressbar.setIndeterminate(true);
 //        progressbar.setVisible(false);
-        
+//        
 //        leftsummarypanel.add(progressbar, BorderLayout.SOUTH);
-        
+//        
         rightsummarypanel = new JPanel(new GridLayout(3, 1));
         
         rightsummarypanel.add(discountsubtotalpanel);

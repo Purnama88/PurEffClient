@@ -198,6 +198,10 @@ public abstract class InvoiceDetailPanel extends MyPanel{
         add(summarypanel);
         add(buttonpanel);
         
+        upperpanel.getExportButton().addActionListener((ActionEvent e) -> {
+            export();
+        });
+        
         upperpanel.getHomeButton().addActionListener((ActionEvent e) -> {
             home();
         });

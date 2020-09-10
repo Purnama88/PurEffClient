@@ -51,7 +51,6 @@ public class ItemHome extends HomePanel{
 //        table.setRowSorter(sorter);
         
         filter();
-        
     }
     
     @Override

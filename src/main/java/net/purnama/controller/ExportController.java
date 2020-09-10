@@ -42,6 +42,7 @@ public class ExportController {
         
         for(SellPriceEntity sellprice : list){
             if(temp.equals(sellprice.getItem().toString())){
+                System.out.println(sellprice.getUom().toString());
                 uomnames.add(sellprice.getUom().toString());
                 numofuom++;
             }

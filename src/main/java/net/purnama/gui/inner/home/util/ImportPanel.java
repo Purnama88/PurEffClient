@@ -24,7 +24,8 @@ import net.purnama.util.GlobalFields;
  */
 public class ImportPanel extends JPanel{
     
-    private final FileChooserPanel filechooserpanel1, filechooserpanel2, filechooserpanel3;
+    private final FileChooserPanel filechooserpanel1, filechooserpanel2, filechooserpanel3, filechooserpanel4,
+            filechooserpanel5;
     
     public ImportPanel(){
         super();
@@ -40,9 +41,17 @@ public class ImportPanel extends JPanel{
         filechooserpanel3 = new FileChooserPanel(GlobalFields.PROPERTIES.getProperty("LABEL_IMPORT_ITEM"), 
                 FileChooserPanel.OPEN);
         
+        filechooserpanel4 = new FileChooserPanel(GlobalFields.PROPERTIES.getProperty("LABEL_IMPORT_SELLPRICE"), 
+                FileChooserPanel.OPEN);
+        
+        filechooserpanel5 = new FileChooserPanel(GlobalFields.PROPERTIES.getProperty("LABEL_IMPORT_STOCK"), 
+                FileChooserPanel.OPEN);
+        
         add(filechooserpanel1);
         add(filechooserpanel2);
         add(filechooserpanel3);
+        add(filechooserpanel4);
+        add(filechooserpanel5);
         
         filechooserpanel1.getSubmitButton().addActionListener((ActionEvent e) ->{
             ImportController importcontroller = new ImportController(filechooserpanel1.getFilePath());
@@ -73,6 +82,16 @@ public class ImportPanel extends JPanel{
                 ItemImportDialog iid = new ItemImportDialog(itemlist);
                 iid.showDialog();
             }
+        });
+        
+        filechooserpanel4.getSubmitButton().addActionListener((ActionEvent e) ->{
+            ImportController importcontroller = new ImportController(filechooserpanel4.getFilePath());
+            ArrayList<ItemEntity> itemlist = importcontroller.importItem();
+        });
+        
+        filechooserpanel5.getSubmitButton().addActionListener((ActionEvent e) ->{
+            ImportController importcontroller = new ImportController(filechooserpanel5.getFilePath());
+            ArrayList<ItemEntity> itemlist = importcontroller.importItem();
         });
     }
 }

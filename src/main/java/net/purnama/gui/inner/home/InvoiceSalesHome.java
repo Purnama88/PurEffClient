@@ -98,6 +98,8 @@ public class InvoiceSalesHome extends HomePanel{
 
                     numofitem = Integer.parseInt(output);
                     
+                    System.out.println(numofitem);
+                    
                     upperpanel.setTotalPageLabel(calculatepages() + "");
                 }
                     
@@ -158,6 +160,8 @@ public class InvoiceSalesHome extends HomePanel{
                         list = mapper.readValue(output,
                                 TypeFactory.defaultInstance().constructCollectionType(ArrayList.class,
                                         InvoiceSalesEntity.class));
+                        
+                        System.out.println(list.size());
                         
                         invoicesalestablemodel.setInvoiceSalesList(list);
                     }

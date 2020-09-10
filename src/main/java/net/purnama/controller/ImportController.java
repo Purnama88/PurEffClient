@@ -14,8 +14,10 @@ import java.util.Iterator;
 import javax.swing.JOptionPane;
 import net.purnama.model.ItemEntity;
 import net.purnama.model.ItemGroupEntity;
+import net.purnama.model.ItemWarehouseEntity;
 import net.purnama.model.PartnerEntity;
 import net.purnama.model.PartnerTypeEntity;
+import net.purnama.model.SellPriceEntity;
 import net.purnama.model.UomEntity;
 import net.purnama.util.GlobalFields;
 import org.apache.poi.ss.usermodel.Cell;
@@ -34,6 +36,18 @@ public class ImportController {
     
     public ImportController(String FILE_NAME){
         this.FILE_NAME = FILE_NAME;
+    }
+    
+    public ArrayList<ItemWarehouseEntity> importItemWarehouse(){
+        ArrayList<ItemWarehouseEntity> list = new ArrayList<>();
+        
+        return list;
+    }
+    
+    public ArrayList<SellPriceEntity> importSellPrice(){
+        ArrayList<SellPriceEntity> list = new ArrayList<>();
+        
+        return list;
     }
     
     public ArrayList<ItemGroupEntity> importItemGroup(){

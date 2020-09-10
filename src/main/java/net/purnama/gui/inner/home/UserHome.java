@@ -160,6 +160,8 @@ public class UserHome extends HomePanel{
                     
                     String output = response.getEntity(String.class);
                     
+                    System.out.println(output);
+                    
                     ObjectMapper mapper = new ObjectMapper();
 
                     try{

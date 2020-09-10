@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -116,7 +117,7 @@ public class LoginFrame extends MyFrame implements ActionListener{
         
 //        ClassLoader classLoader = getClass().getClassLoader();
 //        URL url = classLoader.getResource("net/purnama/language");
-        
+//        
 //        try {
 //            System.out.println(classLoader.getResourceAsStream("net/purnama/language").read());
 //        } catch (IOException ex) {

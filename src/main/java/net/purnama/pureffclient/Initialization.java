@@ -26,7 +26,7 @@ public class Initialization {
         Calendar calendar = Calendar.getInstance();
         
         Calendar limit = Calendar.getInstance();
-        limit.set(2018, 2, 1);
+        limit.set(2021, 4, 1);
         
         if(calendar.before(limit)){
             initLanguage();

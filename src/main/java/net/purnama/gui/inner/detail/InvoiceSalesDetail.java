@@ -25,6 +25,7 @@ import net.purnama.controller.MailController;
 import net.purnama.convertion.IndonesianNumberConvertion;
 import net.purnama.gui.inner.detail.table.ItemInvoiceSalesTablePanel;
 import net.purnama.gui.inner.detail.util.DatePanel;
+import net.purnama.gui.inner.detail.util.ExportPanel;
 import net.purnama.gui.inner.detail.util.LabelDecimalTextFieldPanel;
 import net.purnama.gui.inner.detail.util.LabelTextFieldPanel;
 import net.purnama.gui.inner.home.InvoiceSalesHome;
@@ -447,4 +448,13 @@ public class InvoiceSalesDetail extends InvoiceDetailPanel{
         
         worker.execute();
     }
+    
+//    @Override
+//    public void export(){
+//        MainTabbedPane tabbedPane = (MainTabbedPane)SwingUtilities.
+//                getAncestorOfClass(JTabbedPane.class, this);
+//        
+//        tabbedPane.insertTab(getIndex()+1, 
+//                new ExportPanel(iteminvoicesalestablepanel.getItemInvoiceSalesTableModel().getItemInvoiceSalesList()));
+//    }
 }

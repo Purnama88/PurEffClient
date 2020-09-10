@@ -48,7 +48,7 @@ public class UpperPanel extends JPanel{
         editbutton.setToolTipText(GlobalFields.PROPERTIES.getProperty("TOOLTIP_EDIT"));
         printpreviewbutton = new MyButton(new MyImageIcon().getImage("net/purnama/image/PrintPreview_16.png"), 24, 24);
         printpreviewbutton.setToolTipText(GlobalFields.PROPERTIES.getProperty("TOOLTIP_PRINTPREVIEW"));
-        exportbutton = new MyButton(new MyImageIcon().getImage("net/purnama/image/PrintPreview_16.png"), 24, 24);
+        exportbutton = new MyButton(new MyImageIcon().getImage("net/purnama/image/Export_16.png"), 24, 24);
         exportbutton.setToolTipText(GlobalFields.PROPERTIES.getProperty("TOOLTIP_EXPORT"));
         
         leftpanel.add(homebutton);
